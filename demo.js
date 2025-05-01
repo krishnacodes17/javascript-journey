@@ -143,3 +143,5 @@ function sumfactoriy (arr){
 // sumfactoriy(myarray);
 console.log(sumfactoriy(myarray));
 
+
+
