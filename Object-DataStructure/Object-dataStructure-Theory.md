@@ -103,5 +103,135 @@
 
 
 
+### prototype: 
+    -  prototype is a property of the object. its help to access the property of the object. 
+    - prototype is a way to add the property and method to the object.
+    - we can use prototype  _prototype_
+    eg : 
+        -  function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.greet = function() {
+            console.log('Hello, my name is ' + this.name);
+        }
+        const person1 = new Person('John', 30);
+        person1.greet(); // Hello, my name is John
 
-    
+### polyfill : polyfill is a way to add the functionality to the browser. if any browser does not support the functionality then we can use polyfill to add the functionality to the browser. eg : internet explorer does not support the fetch API. so we can use polyfill to add the fetch API to the internet explorer.
+    -  lets create a fill name polyfill function which not inside our browser 
+    const arr = [1,2,3,4]
+    if (!array.prototype.fill){
+        array.prototype.fill = {
+
+        }
+    }    
+
+- example-2  write a ployfill for our .forEach function does not exist on array variable
+
+  - NOTE : before we write any polyfill we first ynderstant its signtaure (sighnature means its functanality like what its take input , what is return , what is its behaviour , what ius output , etc )   signature >> no return , function input , value ,index
+
+- this is its main functanailty of foreach function
+  - const ForeachFun = arr.foreach (function(value , index){
+    console.log(`value ata index ${index} is ${value}`)
+  })
+
+- Now create our own myForeach Function 
+    - if 
+console.log(arr);
+
+      if(!Array.prototype.myForEach){ 
+       Array.prototype.myForEach = function (userFun){
+          const originalArr = this ;  // here this is point to      current object which is call
+          for (let i =0 ; i < originalArr.length ; i++){
+             userFun(originalArr[i] , i)
+          }
+       }
+      }
+
+
+//   now use our myForEach function 
+
+ const res = arr.myForEach(function(value , index){
+    console.log(`my for each value at Index ata index ${index} is ${index}`);  
+ }) ;
+ console.log(res);
+ 
+
+-  create our MyMap Function  
+
+- map function signature 
+
+- signature of map function  >>  return , newarray make , each element iterate , funtion
+
+         if(!Array.prototype.MyMap){
+        Array.prototype.MyMap = function(userFun){
+           const result = []
+           for(let i=0 ; i< this.length ; i++ ){
+               const value = userFun(this[i] , i );
+                 result.push(value);
+           }
+           return result;
+         }
+        }
+
+       const n2 = arr.MyMap((e)=>{
+        return e*3;    
+      });
+      
+      console.log(n2);
+      console.log(arr);
+
+
+
+
+## Prototypes 
+
+   #### object 
+   - object is a real world entities  inside object we see some properties some method 
+     - properties means  >> colour , weight
+     - method means   >> action , function
+   - different betwwen method and function 
+     - if we create a function inside our object that time is called method 
+     - if we create a single function that is called function 
+- disadvantage of object >> when we create a object and want to create a another object and i want to only scema of 1st object but can't do that and also a problem is that if we create a object that time we store value in key-pair but what we do if key-value pair is more that time we cant copy that one by one so this problem solving we introduce es5 class 
+
+### Es6
+   here we create a class and inside we describe our schema and we create many object using that schema just using New key-word
+
+       syntex : class person (){
+         ...schema
+       }
+
+       const person1 = new person()
+       const person2 = new Person()
+
+- let create a class 
+
+      class person{
+                constructor (fname , lname){
+                this.fname = fname;
+                let  Lastname = lname;
+            }
+                getfullname(){
+                   return `${this.fname}`
+                }
+        }
+
+        const p1 = new person("krishna","gupta")
+        console.log(p1.fname);
+        console.log(p1.Lastname);
+        console.log(p1.getfullname());
+
+ #### constructor 
+- mainly two types of constructor 
+  - default constructor  >> which is create automatically when we not create any constructor
+  - permiterised constructor   >> where we take any arugument as a permeter
+
+#### Prototype 
+ - prototypes going inside when its prototypes value not null
+
+  - when we check class prototypes that time we use prototype
+  - when we check object prototype thaat time we use __proto__   
+
+ 
